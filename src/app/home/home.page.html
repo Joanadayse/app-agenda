@@ -1,0 +1,79 @@
+<ion-header [translucent]="true" color="green">
+  <ion-toolbar>
+    <ion-title style="text-align: center"> Agenda </ion-title>
+
+    <ion-button
+      color="green-light"
+      id="present-alert"
+      size="small"
+      style="margin-top: 10px"
+    >
+      <ion-icon name="add"></ion-icon>
+      <span>Novo</span>
+    </ion-button>
+    <ion-alert
+      trigger="present-alert"
+      header="Criar novo compromisso"
+      [buttons]="adicionar"
+    ></ion-alert>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="card-data" *ngFor="let dados of dadosAgenda ,let i=index">
+      <ion-col>
+        <ion-row>
+          <span class="titulo-cor">Compromisso</span>
+          <ion-toggle
+            color="green"
+            checked="{{dados.ativo}}"
+            [(ngModel)]="dados.ativo"
+            (ionChange)="ativarCompromisso(i)"
+          ></ion-toggle>
+        </ion-row>
+
+        <div class="card-container">
+          <ion-row>
+            <ion-input
+              value="{{dados.texto}}"
+              [(ngModel)]="dados.texto"
+              placeholder="digite seu texto aqui"
+            ></ion-input>
+          </ion-row>
+        </div>
+
+        <ion-row>
+          <ion-item>
+            <ion-label class="datatime-text"><b>Data:</b></ion-label>
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                  id="datetime"
+                  [(ngModel)]="dados.data"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <div></div>
+  </ion-grid>
+</ion-content>
+
+<ion-footer style="text-align: center">
+  <ion-button (click)="apagar()" size="small" color="green-light">
+    <ion-icon name="trash"></ion-icon>
+  </ion-button>
+
+  <ion-button (click)="mudarStatus(true)" size="small" color="green-light"
+    >Ativar todos</ion-button
+  >
+  <ion-button (click)="mudarStatus(false)" size="small" color="green-light"
+    >Desativar todos</ion-button
+  >
+</ion-footer>

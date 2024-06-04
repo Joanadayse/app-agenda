@@ -1,0 +1,38 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+
+$green:#80cfa9;
+$green-light: #54a588;
+
+
+.card-data{
+    margin-top: 8px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c5c5c5;
+    background-color:$green ;
+}
+
+.card-container{
+    margin-top: 6px;
+    padding: 5px;
+    border-radius: 9px;
+    background-color: #ffffff;
+}
+
+.titulo-cor{
+    font-size: 18px;
+    margin: 4px;
+    font-weight: bold;
+    color: #058a59;
+}
+
+
+.button{
+    background-color: $green ;
+        color: #448a71;
+}
+
+
